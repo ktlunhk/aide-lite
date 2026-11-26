@@ -1,0 +1,22 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "com.aideui"
+        minSdkVersion 21
+        targetSdkVersion 30
+        multiDexEnabled true
+        versionCode 87
+        versionName "1.87"
+    }
+    packagingOptions { exclude 'META-INF/*' }
+}
+
+dependencies {
+    // ECJ (Eclipse Java compiler) is bundled in libs/
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // Legacy D8 fallback and APK signing. Updated Android-ready D8 is bundled in assets.
+    compile 'com.android.tools:r8:1.4.93'
+    compile 'com.android.tools.build:apksig:3.0.0'
+}
